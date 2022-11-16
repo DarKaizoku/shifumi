@@ -11,11 +11,15 @@ mi.addEventListener('click', () => console.log('mi'));
 
 // Pour le reste, a vous de jouer
 
-function printShi (){
+shi.addEventListener('click', () => { player.setAttribute("src", "./img/shi.png");});
+fu.addEventListener('click', () => { player.setAttribute("src", "./img/fu.png");});
+mi.addEventListener('click', () => { player.setAttribute("src", "./img/mi.png");});
+
+/*function printShi (){
     var img = document.createElement('img');
     img.src ="./img/shi.png";
 
-    player.setAttribute("url",img);
+    player.setAttribute("src",img);
 
 
 
