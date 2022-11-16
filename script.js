@@ -5,7 +5,7 @@ const player = document.getElementById('player');
 const ia = document.getElementById('ia');
 const command = document.getElementById('command');
 
-shi.addEventListener('click', printShi );
+shi.addEventListener('click',() => console.log('shi'));
 fu.addEventListener('click', () => console.log('fu'));
 mi.addEventListener('click', () => console.log('mi'));
 
@@ -18,8 +18,9 @@ let pickIa = "fu";
 
 const IA_CHOICE = ["shi", "fu", "mi"];
 
-shi.addEventListener('click', () => { player.setAttribute("src", "./img/shi.png");
-    let rand = Math.floor(Math.random()*IA_CHOICE.length);
+shi.addEventListener('click', () => {
+    player.setAttribute("src", "./img/shi.png");
+    let rand = Math.floor(Math.random() * IA_CHOICE.length);
     let randIa = IA_CHOICE[rand];
     ia.setAttribute("src", `/img/${randIa}.png`);
 });
@@ -36,12 +37,25 @@ fu.addEventListener('click', () => { player.setAttribute("src", "./img/fu.png");
 let result = Math.floor(Math.random()*tableau.length);
 let ChoiceIA = tableau[result];
 ia.setAttribute("src", `/img/${ChoiceIA}.png`);
+fu.addEventListener('click', () => { player.setAttribute("src", "./img/fu.png"); });
+
+let choiceMi = ['shi', 'fu', 'mi'];
+
+mi.addEventListener('click', () => { player.setAttribute("src", "./img/mi.png");   
+    let computerChoice = Math.floor(Math.random() * choiceMi.length);
+    let calculator = choiceMi[computerChoice];
+    ia.setAttribute("src",`/img/${calculator}.png`);
 });
 
 
-mi.addEventListener('click', () => { player.setAttribute("src", "./img/mi.png");});
+function x() {
 
-const score_player = document.getElementById('score-player');
+}
+console.log(calculator);
+
+
+
+/* const score_player = document.getElementById('score-player');
 
 
 function printShi (){
@@ -75,4 +89,4 @@ function printShi (){
 
     const hidden = document.getElementsByClassName('hidden');
     hidden.setAttribute("style","display : initial");
-};
+}; */
