@@ -10,3 +10,7 @@ fu.addEventListener('click', () => console.log('fu'));
 mi.addEventListener('click', () => console.log('mi'));
 
 // Pour le reste, a vous de jouer
+
+shi.addEventListener('click', () => { player.setAttribute("src", "/img/shi.png");});
+fu.addEventListener('click', () => { player.setAttribute("src", "/img/fu.png");});
+mi.addEventListener('click', () => { player.setAttribute("src", "/img/mi.png");});
