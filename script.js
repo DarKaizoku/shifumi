@@ -25,7 +25,18 @@ shi.addEventListener('click', () => { player.setAttribute("src", "./img/shi.png"
 });
 
 
-fu.addEventListener('click', () => { player.setAttribute("src", "./img/fu.png");});
+
+let tableau = [
+    "shi",
+    "fu",
+    "mi",
+];
+
+fu.addEventListener('click', () => { player.setAttribute("src", "./img/fu.png");
+let result = Math.floor(Math.random()*tableau.length);
+let ChoiceIA = tableau[result];
+ia.setAttribute("src", `/img/${ChoiceIA}.png`);
+});
 
 
 mi.addEventListener('click', () => { player.setAttribute("src", "./img/mi.png");});
