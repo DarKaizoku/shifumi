@@ -11,12 +11,15 @@ mi.addEventListener('click', () => console.log('mi'));
 
 // Pour le reste, a vous de jouer
 
+let rebootPlay = 0;
+
 const SCORE_PL = document.getElementById('score-player');
 const SCORE_IA = document.getElementById('score-ia');
 const restart = document.getElementById('restart');
 
-let scorePl = 3;
-let scoreIa = 2;
+
+let scorePl = 0;
+let scoreIa = 0;
 let pickIa = '';
 let pickPlayer = '';
 
@@ -42,7 +45,6 @@ fu.addEventListener('click', () => {
     let ChoiceIA = IA_CHOICE[result];
     let pickIa = choiceIA;
     ia.setAttribute("src", `/img/${ChoiceIA}.png`);
-    fu.addEventListener('click', () => { player.setAttribute("src", "./img/fu.png"); });
 });
 
 mi.addEventListener('click', () => {
@@ -70,11 +72,10 @@ function nulR() { return console.log("EGALITE !!") };
 
 if (scorePl == 3 || scoreIa == 3) {
     restart.classList.remove('hidden');
+    rebootPlay = 1;
     //restart.classList.add('show');
 
 } else { };
-
-
 
 
 
