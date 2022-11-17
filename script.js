@@ -17,9 +17,15 @@ const SCORE_PL = document.getElementById('score-player');
 const SCORE_IA = document.getElementById('score-ia');
 const restart = document.getElementById('restart');
 
+<<<<<<< HEAD
 
 let scorePl = 0;
 let scoreIa = 0;
+=======
+let scorePl = 0;
+let scoreIa = 0;
+let round = 0;
+>>>>>>> e69707dfbc502f09508761e01637538a2d097a23
 let pickIa = '';
 let pickPlayer = '';
 
@@ -35,6 +41,10 @@ shi.addEventListener('click', () => {
     let randIa = IA_CHOICE[rand];
     let pickIa = randIa;
     ia.setAttribute("src", `/img/${randIa}.png`);
+    round++;
+    end();
+    console.log(round);
+    return round;
 });
 
 
@@ -45,6 +55,13 @@ fu.addEventListener('click', () => {
     let ChoiceIA = IA_CHOICE[result];
     let pickIa = choiceIA;
     ia.setAttribute("src", `/img/${ChoiceIA}.png`);
+<<<<<<< HEAD
+=======
+    round++;
+    end();
+    console.log(round);
+    return round;
+>>>>>>> e69707dfbc502f09508761e01637538a2d097a23
 });
 
 mi.addEventListener('click', () => {
@@ -54,6 +71,10 @@ mi.addEventListener('click', () => {
     let calculator = IA_CHOICE[computerChoice];
     let pickIa = calculator;
     ia.setAttribute("src", `/img/${calculator}.png`);
+    round++;
+    end();
+    console.log(round);
+    return round;
 });
 
 SCORE_PL.innerHTML = `${scorePl}`;
@@ -70,13 +91,23 @@ function loseR() {
 };
 function nulR() { return console.log("EGALITE !!") };
 
-if (scorePl == 3 || scoreIa == 3) {
+function end() {
+if (round == 3) {
     restart.classList.remove('hidden');
+<<<<<<< HEAD
     rebootPlay = 1;
     //restart.classList.add('show');
+=======
+};}
+>>>>>>> e69707dfbc502f09508761e01637538a2d097a23
 
-} else { };
 
+restart.addEventListener('click', () => {
+    scorePl = 0;
+    scoreIa = 0;
+    player.removeAttribute("src");
+    ia.removeAttribute("src");
+});
 
 
 
