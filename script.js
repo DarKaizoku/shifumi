@@ -11,14 +11,19 @@ mi.addEventListener('click', () => console.log('mi'));
 
 // Pour le reste, a vous de jouer
 
+
 const SCORE_PL = document.getElementById('score-player');
 const SCORE_IA = document.getElementById('score-ia');
 const restart = document.getElementById('restart');
+
 
 let scorePl = 0;
 let scoreIa = 2;
 let round = 0;
 
+
+let pickIa = '';
+let pickPlayer = '';
 
 SCORE_PL.textContent = `${scorePl}`;
 SCORE_IA.textContent = `${scoreIa}`;
@@ -28,10 +33,12 @@ const IA_CHOICE = ["shi", "fu", "mi"];
 shi.addEventListener('click', clickShi);
 
 function clickShi() {
+    let pickPlayer = 'shi';
     player.setAttribute("src", "./img/shi.png");
     let rand = Math.floor(Math.random() * IA_CHOICE.length);
     let randIa = IA_CHOICE[rand];
     ia.setAttribute("src", `/img/${randIa}.png`);
+    matchVS(pickPlayer, randIa);
     round++;
     end();
     console.log(round);
@@ -41,55 +48,86 @@ function clickShi() {
 fu.addEventListener('click', clickFu);
 
 function clickFu() {
+    let pickPlayer = 'fu';
     player.setAttribute("src", "./img/fu.png");
     let result = Math.floor(Math.random() * IA_CHOICE.length);
-    let ChoiceIA = IA_CHOICE[result];
-    ia.setAttribute("src", `/img/${ChoiceIA}.png`);
+    let choiceIA = IA_CHOICE[result];
+    let pickIa = choiceIA;
+    ia.setAttribute("src", `/img/${choiceIA}.png`);
+    matchVS(pickPlayer, choiceIA);
     round++;
     end();
     console.log(round);
-    return round;
 }
 
 mi.addEventListener('click', clickMi);
 
-function clickMi(){
+function clickMi() {
+    let pickPlayer = 'mi';
     player.setAttribute("src", "./img/mi.png");
     let computerChoice = Math.floor(Math.random() * IA_CHOICE.length);
     let calculator = IA_CHOICE[computerChoice];
     ia.setAttribute("src", `/img/${calculator}.png`);
+    matchVS(pickPlayer, calculator);
     round++;
     end();
     console.log(round);
     return round;
 };
 
-SCORE_PL.textContent = `${scorePl}`;
-SCORE_IA.textContent = `${scoreIa}`;
+
+function matchVS(pickPlayer, pickIa) {
+    let newStr = pickPlayer + pickIa;
+    switch (newStr) {
+        case pickPlayer + pickPlayer:
+            return nulR();
+            break;
+        case "shifu":
+        case "mishi":
+        case "fumi":
+            return winR();
+            break;
+        default:
+            return loseR();
+            //case "mifu" || "shimi" || "fushi": return loseR();
+            break;
+    };
+
+};
+
+
+SCORE_PL.innerHTML = `${scorePl}`;
+SCORE_IA.innerHTML = `${scoreIa}`;
 
 
 function winR() {
     scorePl++;
+    console.log(scorePl);
     console.log("YOU WIN !!");
+    return;
 };
 function loseR() {
     scoreIa++;
-    console.log("YOU LOSE !!")
+    console.log(scorePl);
+    return console.log("YOU LOSE !!")
 };
-function nulR() {console.log("EGALITE !!") };
+function nulR() { console.log("EGALITE !!") };
+
+
 
 function end() {
-if (round == 3) {
-    restart.classList.remove('hidden');
-    shi.removeEventListener('click', clickShi);
-    fu.removeEventListener('click', clickFu);
-    mi.removeEventListener('click', clickMi);
-};}
+    if (round == 3) {
+        restart.classList.remove('hidden');
+        shi.removeEventListener('click', clickShi);
+        fu.removeEventListener('click', clickFu);
+        mi.removeEventListener('click', clickMi);
+    };
+}
 
 
 restart.addEventListener('click', () => {
-    SCORE_PL.textContent= 0;
-    SCORE_IA.textContent= 0;
+    SCORE_PL.textContent = 0;
+    SCORE_IA.textContent = 0;
     player.removeAttribute("src");
     ia.removeAttribute("src");
     shi.addEventListener('click', clickShi);
@@ -98,7 +136,6 @@ restart.addEventListener('click', () => {
     round = 0;
     restart.classList.add('hidden');
 });
-
 
 
 
