@@ -16,81 +16,87 @@ const SCORE_IA = document.getElementById('score-ia');
 const restart = document.getElementById('restart');
 
 let scorePl = 0;
-let scoreIa = 0;
+let scoreIa = 2;
 let round = 0;
-let pickIa = '';
-let pickPlayer = '';
 
-SCORE_PL.innerHTML = `${scorePl}`;
-SCORE_IA.innerHTML = `${scoreIa}`;
+
+SCORE_PL.textContent = `${scorePl}`;
+SCORE_IA.textContent = `${scoreIa}`;
 
 const IA_CHOICE = ["shi", "fu", "mi"];
 
-shi.addEventListener('click', () => {
-    let pickPlayer = 'shi';
+shi.addEventListener('click', clickShi);
+
+function clickShi() {
     player.setAttribute("src", "./img/shi.png");
     let rand = Math.floor(Math.random() * IA_CHOICE.length);
     let randIa = IA_CHOICE[rand];
-    let pickIa = randIa;
     ia.setAttribute("src", `/img/${randIa}.png`);
     round++;
     end();
     console.log(round);
     return round;
-});
+}
 
+fu.addEventListener('click', clickFu);
 
-fu.addEventListener('click', () => {
-    let pickPlayer = 'fu';
+function clickFu() {
     player.setAttribute("src", "./img/fu.png");
     let result = Math.floor(Math.random() * IA_CHOICE.length);
     let ChoiceIA = IA_CHOICE[result];
-    let pickIa = choiceIA;
     ia.setAttribute("src", `/img/${ChoiceIA}.png`);
     round++;
     end();
     console.log(round);
     return round;
-});
+}
 
-mi.addEventListener('click', () => {
-    let pickPlayer ='mi'; 
+mi.addEventListener('click', clickMi);
+
+function clickMi(){
     player.setAttribute("src", "./img/mi.png");
     let computerChoice = Math.floor(Math.random() * IA_CHOICE.length);
     let calculator = IA_CHOICE[computerChoice];
-    let pickIa = calculator;
     ia.setAttribute("src", `/img/${calculator}.png`);
     round++;
     end();
     console.log(round);
     return round;
-});
+};
 
-SCORE_PL.innerHTML = `${scorePl}`;
-SCORE_IA.innerHTML = `${scoreIa}`;
+SCORE_PL.textContent = `${scorePl}`;
+SCORE_IA.textContent = `${scoreIa}`;
 
 
 function winR() {
     scorePl++;
-    return console.log("YOU WIN !!");
+    console.log("YOU WIN !!");
 };
 function loseR() {
     scoreIa++;
-    return console.log("YOU LOSE !!")
+    console.log("YOU LOSE !!")
 };
-function nulR() { return console.log("EGALITE !!") };
+function nulR() {console.log("EGALITE !!") };
 
 function end() {
 if (round == 3) {
     restart.classList.remove('hidden');
+    shi.removeEventListener('click', clickShi);
+    fu.removeEventListener('click', clickFu);
+    mi.removeEventListener('click', clickMi);
 };}
 
 
 restart.addEventListener('click', () => {
-    scorePl = 0;
-    scoreIa = 0;
+    SCORE_PL.textContent= 0;
+    SCORE_IA.textContent= 0;
     player.removeAttribute("src");
     ia.removeAttribute("src");
+    shi.addEventListener('click', clickShi);
+    fu.addEventListener('click', clickFu);
+    mi.addEventListener('click', clickMi);
+    round = 0;
+    restart.classList.add('hidden');
 });
 
 
