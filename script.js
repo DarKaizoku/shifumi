@@ -11,13 +11,16 @@ mi.addEventListener('click', () => console.log('mi'));
 
 // Pour le reste, a vous de jouer
 
+const SCORE_PL = document.getElementById('score-player');
+const SCORE_IA = document.getElementById('score-ia');
+
+
 let scorePl = 0;
 let scoreIa = 0;
-let pickIa = "fu";
 
-function winR() {return console.log("YOU WIN !!") };
-function loseR() {return console.log("YOU LOSE !!") };
-function nulR() {return console.log("EGALITE !!") };
+function winR() { return console.log("YOU WIN !!") };
+function loseR() { return console.log("YOU LOSE !!") };
+function nulR() { return console.log("EGALITE !!") };
 
 const IA_CHOICE = ["shi", "fu", "mi"];
 
@@ -37,18 +40,26 @@ fu.addEventListener('click', () => {
     fu.addEventListener('click', () => { player.setAttribute("src", "./img/fu.png"); });
 });
 
-    mi.addEventListener('click', () => {
-        player.setAttribute("src", "./img/mi.png");
-        let computerChoice = Math.floor(Math.random() * IA_CHOICE.length);
-        let calculator = IA_CHOICE[computerChoice];
-        ia.setAttribute("src", `/img/${calculator}.png`);
-    });
+mi.addEventListener('click', () => {
+    player.setAttribute("src", "./img/mi.png");
+    let computerChoice = Math.floor(Math.random() * IA_CHOICE.length);
+    let calculator = IA_CHOICE[computerChoice];
+    ia.setAttribute("src", `/img/${calculator}.png`);
+});
+
+SCORE_PL.innerHTML = `${scorePl}`;
+SCORE_IA.innerHTML = `${scoreIa}`;
 
 
-    function x() {
 
-    }
-    console.log(calculator);
+
+
+
+
+
+
+
+
 
 
 
