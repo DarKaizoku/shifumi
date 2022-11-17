@@ -11,21 +11,17 @@ mi.addEventListener('click', () => console.log('mi'));
 
 // Pour le reste, a vous de jouer
 
-let rebootPlay = 0;
 
 const SCORE_PL = document.getElementById('score-player');
 const SCORE_IA = document.getElementById('score-ia');
 const restart = document.getElementById('restart');
 
-<<<<<<< HEAD
 
 let scorePl = 0;
 let scoreIa = 0;
-=======
-let scorePl = 0;
-let scoreIa = 0;
 let round = 0;
->>>>>>> e69707dfbc502f09508761e01637538a2d097a23
+
+
 let pickIa = '';
 let pickPlayer = '';
 
@@ -41,10 +37,12 @@ shi.addEventListener('click', () => {
     let randIa = IA_CHOICE[rand];
     let pickIa = randIa;
     ia.setAttribute("src", `/img/${randIa}.png`);
+
+    matchVS(pickPlayer, randIa);
+
     round++;
     end();
     console.log(round);
-    return round;
 });
 
 
@@ -53,29 +51,51 @@ fu.addEventListener('click', () => {
     player.setAttribute("src", "./img/fu.png");
     let result = Math.floor(Math.random() * IA_CHOICE.length);
     let ChoiceIA = IA_CHOICE[result];
-    let pickIa = choiceIA;
+    let pickIa = ChoiceIA;
     ia.setAttribute("src", `/img/${ChoiceIA}.png`);
-<<<<<<< HEAD
-=======
+
+    matchVS(pickPlayer, ChoiceIA);
+
     round++;
     end();
     console.log(round);
-    return round;
->>>>>>> e69707dfbc502f09508761e01637538a2d097a23
 });
 
 mi.addEventListener('click', () => {
-    let pickPlayer ='mi'; 
+    let pickPlayer = 'mi';
     player.setAttribute("src", "./img/mi.png");
     let computerChoice = Math.floor(Math.random() * IA_CHOICE.length);
     let calculator = IA_CHOICE[computerChoice];
     let pickIa = calculator;
     ia.setAttribute("src", `/img/${calculator}.png`);
+
+    matchVS(pickPlayer, calculator);
+
     round++;
     end();
     console.log(round);
-    return round;
 });
+
+
+function matchVS(pickPlayer, pickIa) {
+    let newStr = pickPlayer + pickIa;
+    switch (newStr) {
+        case pickPlayer + pickPlayer:
+            return nulR();
+            break;
+        case "shifu":
+        case "mishi":
+        case "fumi":
+            return winR();
+            break;
+        default:
+            return loseR();
+            //case "mifu" || "shimi" || "fushi": return loseR();
+            break;
+    };
+
+};
+
 
 SCORE_PL.innerHTML = `${scorePl}`;
 SCORE_IA.innerHTML = `${scoreIa}`;
@@ -83,31 +103,31 @@ SCORE_IA.innerHTML = `${scoreIa}`;
 
 function winR() {
     scorePl++;
-    return console.log("YOU WIN !!");
+    console.log(scorePl);
+    console.log("YOU WIN !!");
+    return;
 };
 function loseR() {
     scoreIa++;
+    console.log(scorePl);
     return console.log("YOU LOSE !!")
 };
 function nulR() { return console.log("EGALITE !!") };
 
+
 function end() {
-if (round == 3) {
-    restart.classList.remove('hidden');
-<<<<<<< HEAD
-    rebootPlay = 1;
-    //restart.classList.add('show');
-=======
-};}
->>>>>>> e69707dfbc502f09508761e01637538a2d097a23
+    if (round == 3) {
+        restart.classList.remove('hidden');
+    };
+};
 
-
-restart.addEventListener('click', () => {
+/*restart.addEventListener('click', () => {
     scorePl = 0;
     scoreIa = 0;
     player.removeAttribute("src");
     ia.removeAttribute("src");
 });
+
 
 
 
