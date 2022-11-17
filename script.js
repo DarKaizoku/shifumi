@@ -15,8 +15,9 @@ const SCORE_PL = document.getElementById('score-player');
 const SCORE_IA = document.getElementById('score-ia');
 const restart = document.getElementById('restart');
 
-let scorePl = 3;
-let scoreIa = 2;
+let scorePl = 0;
+let scoreIa = 0;
+let round = 0;
 
 SCORE_PL.innerHTML = `${scorePl}`;
 SCORE_IA.innerHTML = `${scoreIa}`;
@@ -28,6 +29,10 @@ shi.addEventListener('click', () => {
     let rand = Math.floor(Math.random() * IA_CHOICE.length);
     let randIa = IA_CHOICE[rand];
     ia.setAttribute("src", `/img/${randIa}.png`);
+    round++;
+    end();
+    console.log(round);
+    return round;
 });
 
 
@@ -36,7 +41,10 @@ fu.addEventListener('click', () => {
     let result = Math.floor(Math.random() * IA_CHOICE.length);
     let ChoiceIA = IA_CHOICE[result];
     ia.setAttribute("src", `/img/${ChoiceIA}.png`);
-    fu.addEventListener('click', () => { player.setAttribute("src", "./img/fu.png"); });
+    round++;
+    end();
+    console.log(round);
+    return round;
 });
 
 mi.addEventListener('click', () => {
@@ -44,6 +52,10 @@ mi.addEventListener('click', () => {
     let computerChoice = Math.floor(Math.random() * IA_CHOICE.length);
     let calculator = IA_CHOICE[computerChoice];
     ia.setAttribute("src", `/img/${calculator}.png`);
+    round++;
+    end();
+    console.log(round);
+    return round;
 });
 
 SCORE_PL.innerHTML = `${scorePl}`;
@@ -60,12 +72,18 @@ function loseR() {
 };
 function nulR() { return console.log("EGALITE !!") };
 
-if (scorePl == 3 || scoreIa == 3) {
+function end() {
+if (round == 3) {
     restart.classList.remove('hidden');
-    //restart.classList.add('show');
+};}
 
-} else { };
 
+restart.addEventListener('click', () => {
+    scorePl = 0;
+    scoreIa = 0;
+    player.removeAttribute("src");
+    ia.removeAttribute("src");
+});
 
 
 
