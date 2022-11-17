@@ -15,6 +15,9 @@ let scorePl = 0;
 let scoreIa = 0;
 let pickIa = "fu";
 
+function winR() {return console.log("YOU WIN !!") };
+function loseR() {return console.log("YOU LOSE !!") };
+function nulR() {return console.log("EGALITE !!") };
 
 const IA_CHOICE = ["shi", "fu", "mi"];
 
