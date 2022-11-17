@@ -17,6 +17,8 @@ const restart = document.getElementById('restart');
 
 let scorePl = 3;
 let scoreIa = 2;
+let pickIa = '';
+let pickPlayer = '';
 
 SCORE_PL.innerHTML = `${scorePl}`;
 SCORE_IA.innerHTML = `${scoreIa}`;
@@ -24,25 +26,31 @@ SCORE_IA.innerHTML = `${scoreIa}`;
 const IA_CHOICE = ["shi", "fu", "mi"];
 
 shi.addEventListener('click', () => {
+    let pickPlayer = 'shi';
     player.setAttribute("src", "./img/shi.png");
     let rand = Math.floor(Math.random() * IA_CHOICE.length);
     let randIa = IA_CHOICE[rand];
+    let pickIa = randIa;
     ia.setAttribute("src", `/img/${randIa}.png`);
 });
 
 
 fu.addEventListener('click', () => {
+    let pickPlayer = 'fu';
     player.setAttribute("src", "./img/fu.png");
     let result = Math.floor(Math.random() * IA_CHOICE.length);
     let ChoiceIA = IA_CHOICE[result];
+    let pickIa = choiceIA;
     ia.setAttribute("src", `/img/${ChoiceIA}.png`);
     fu.addEventListener('click', () => { player.setAttribute("src", "./img/fu.png"); });
 });
 
 mi.addEventListener('click', () => {
+    let pickPlayer ='mi'; 
     player.setAttribute("src", "./img/mi.png");
     let computerChoice = Math.floor(Math.random() * IA_CHOICE.length);
     let calculator = IA_CHOICE[computerChoice];
+    let pickIa = calculator;
     ia.setAttribute("src", `/img/${calculator}.png`);
 });
 
@@ -113,3 +121,25 @@ function printShi (){
     const hidden = document.getElementsByClassName('hidden');
     hidden.setAttribute("style","display : initial");
 }; */
+
+
+/* function printMi () {
+
+player.setAttribute("src", "./img/mi.png");
+ia.setAttribute("src", `/img/${calculator}.png`);
+
+let pickPlayer= "mi";
+
+
+if (pickPlayer==pickIa) {
+    console.log("égalité");
+} else if {
+
+
+}
+
+
+
+
+
+} */
