@@ -18,15 +18,13 @@ const restart = document.getElementById('restart');
 
 
 let scorePl = 0;
-let scoreIa = 2;
+let scoreIa = 0;
 let round = 0;
 
 
 let pickIa = '';
 let pickPlayer = '';
 
-SCORE_PL.textContent = `${scorePl}`;
-SCORE_IA.textContent = `${scoreIa}`;
 
 const IA_CHOICE = ["shi", "fu", "mi"];
 
@@ -95,21 +93,18 @@ function matchVS(pickPlayer, pickIa) {
 
 };
 
-
-SCORE_PL.innerHTML = `${scorePl}`;
-SCORE_IA.innerHTML = `${scoreIa}`;
-
-
 function winR() {
     scorePl++;
     console.log(scorePl);
     console.log("YOU WIN !!");
+    SCORE_PL.textContent = `${scorePl}`;
     return;
 };
 function loseR() {
     scoreIa++;
-    console.log(scorePl);
-    return console.log("YOU LOSE !!")
+    console.log("YOU LOSE !!")
+    SCORE_IA.textContent = `${scoreIa}`;
+    return;
 };
 function nulR() { console.log("EGALITE !!") };
 
@@ -128,6 +123,8 @@ function end() {
 restart.addEventListener('click', () => {
     SCORE_PL.textContent = 0;
     SCORE_IA.textContent = 0;
+    scorePl = 0;
+    scoreIa = 0;
     player.removeAttribute("src");
     ia.removeAttribute("src");
     shi.addEventListener('click', clickShi);
