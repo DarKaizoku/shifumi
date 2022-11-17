@@ -13,14 +13,13 @@ mi.addEventListener('click', () => console.log('mi'));
 
 const SCORE_PL = document.getElementById('score-player');
 const SCORE_IA = document.getElementById('score-ia');
+const restart = document.getElementById('restart');
 
+let scorePl = 3;
+let scoreIa = 2;
 
-let scorePl = 0;
-let scoreIa = 0;
-
-function winR() { return console.log("YOU WIN !!") };
-function loseR() { return console.log("YOU LOSE !!") };
-function nulR() { return console.log("EGALITE !!") };
+SCORE_PL.innerHTML = `${scorePl}`;
+SCORE_IA.innerHTML = `${scoreIa}`;
 
 const IA_CHOICE = ["shi", "fu", "mi"];
 
@@ -50,6 +49,22 @@ mi.addEventListener('click', () => {
 SCORE_PL.innerHTML = `${scorePl}`;
 SCORE_IA.innerHTML = `${scoreIa}`;
 
+
+function winR() {
+    scorePl++;
+    return console.log("YOU WIN !!");
+};
+function loseR() {
+    scoreIa++;
+    return console.log("YOU LOSE !!")
+};
+function nulR() { return console.log("EGALITE !!") };
+
+if (scorePl == 3 || scoreIa == 3) {
+    restart.classList.remove('hidden');
+    //restart.classList.add('show');
+
+} else { };
 
 
 
