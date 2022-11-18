@@ -35,7 +35,7 @@ addEvents();
 function randomIa() {
   let rand = Math.floor(Math.random() * IA_CHOICE.length);
   randIa = IA_CHOICE[rand];
-  ia.setAttribute("src", `/img/${randIa}.png`);
+  ia.setAttribute("src", `./img/${randIa}.png`);
   console.log(`L'ordinateur fait ${randIa} !`);
 }
 
