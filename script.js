@@ -46,7 +46,7 @@ function playerChoice(pChoice) {
 function clickShi() {
   let pickPlayer = "shi";
   playerChoice("shi");
-  console.log("Je fais shi !");
+  console.log("Tu fais shi !");
   randomIa();
   matchVS(pickPlayer, randIa);
   round++;
@@ -57,7 +57,7 @@ function clickShi() {
 function clickFu() {
   playerChoice("fu");
   let pickPlayer = "fu";
-  console.log("Je fais fu !");
+  console.log("Tu fais fu !");
   randomIa();
   matchVS(pickPlayer, randIa);
   round++;
@@ -68,7 +68,7 @@ function clickFu() {
 function clickMi() {
   playerChoice("mi");
   let pickPlayer = "mi";
-  console.log("Je fais mi !");
+  console.log("Tu fais mi !");
   randomIa();
   matchVS(pickPlayer, randIa);
   round++;
@@ -119,7 +119,7 @@ function end() {
     fu.removeEventListener("click", clickFu);
     mi.removeEventListener("click", clickMi);
     resultats();
-    console.log("Voulez vous rejouer ?");
+    console.log("Veux-tu rejouer ?");
   }
 }
 
